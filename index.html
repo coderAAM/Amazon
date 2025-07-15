@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Amazon Clone</title>
+     <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+     <!-- Header/Navbar -->
+     <header class="navbar">
+          <div class="nav-logo">
+               <a href="#"><img src="amazon.png" alt="Amazon Logo"></a>
+          </div>
+          <div class="nav-country-select">
+               <select id="countrySelect" title="Select your country">
+                    <option value="in" data-flag="🇮🇳">🇮🇳 India</option>
+                    <option value="us" data-flag="🇺🇸">🇺🇸 USA</option>
+                    <option value="uk" data-flag="🇬🇧">🇬🇧 UK</option>
+                    <option value="ca" data-flag="🇨🇦">🇨🇦 Canada</option>
+                    <option value="au" data-flag="🇦🇺">🇦🇺 Australia</option>
+               </select>
+          </div>
+          <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
+               <span></span><span></span><span></span>
+          </button>
+          <div class="nav-search">
+               <input type="text" id="searchInput" placeholder="Search products...">
+               <button id="searchBtn">Search</button>
+          </div>
+          <div class="nav-links">
+               <a href="#" class="nav-account">Account</a>
+               <a href="#" class="nav-orders">Orders</a>
+               <a href="#" class="nav-cart" id="cartBtn" title="View Cart"><span class="cart-eye">&#128065;</span> <span
+                         id="cartCount">0</span></a>
+               <button id="themeToggle" class="theme-toggle" title="Toggle light/dark mode">🌙</button>
+          </div>
+     </header>
+
+     <!-- Banner Carousel -->
+     <div class="banner-carousel" id="bannerCarousel">
+          <div class="banner-slide active"><img src="banner_1.jpg" alt="Banner 1"></div>
+          <div class="banner-slide"><img src="banner_2.png" alt="Banner 2"></div>
+          <div class="banner-slide"><img src="banner_3.png" alt="Banner 3"></div>
+          <div class="banner-slide"><img src="banner_4.png" alt="Banner 4"></div>
+          <div class="banner-dots" id="bannerDots"></div>
+     </div>
+
+     <!-- Cart Modal -->
+     <div id="cartModal" class="modal-overlay" style="display:none;">
+          <div class="modal cart-modal">
+               <button class="modal-close" id="closeCartModal">&times;</button>
+               <h2>Your Cart</h2>
+               <div id="cartItems"></div>
+          </div>
+     </div>
+
+     <!-- Product Details Modal -->
+     <div id="productModal" class="modal-overlay" style="display:none;">
+          <div class="modal product-modal" id="productModalContent">
+               <!-- Product details will be injected here -->
+          </div>
+     </div>
+
+     <!-- Order Form Modal -->
+     <div id="orderModal" class="modal-overlay" style="display:none;">
+          <div class="modal order-modal" id="orderModalContent">
+               <!-- Order form will be injected here -->
+          </div>
+     </div>
+
+     <div class="container">
+          <!-- Sidebar Categories -->
+          <aside class="sidebar">
+               <h2>Categories</h2>
+               <ul id="categoryList">
+                    <li data-category="all" class="active">All</li>
+                    <li data-category="electronics">Electronics</li>
+                    <li data-category="fashion">Fashion</li>
+                    <li data-category="watches">Watches</li>
+                    <li data-category="fashion-products">Fashion Products</li>
+                    <li data-category="books">Books</li>
+                    <li data-category="home">Home</li>
+                    <li data-category="toys">Toys</li>
+               </ul>
+          </aside>
+
+          <!-- Main Product Grid -->
+          <main class="main-content">
+               <h1>Products</h1>
+               <div class="product-grid" id="productGrid">
+                    <!-- Product cards will be injected here by JS -->
+               </div>
+          </main>
+     </div>
+
+     <!-- Footer -->
+     <footer class="footer">
+          <div class="footer-links">
+               <a href="#">Conditions of Use</a>
+               <a href="#">Privacy Notice</a>
+               <a href="#">Help</a>
+          </div>
+          <div class="footer-social">
+               <a href="https://coderaam.github.io/portfolio_A/" target="_blank" title="Portfolio"
+                    class="social-icon">&#x1F426;</a>
+               <a href="https://coderaam.github.io/SocialTube/" target="_blank" title="SocialTube"
+                    class="social-icon">&#x1F426;</a>
+               <a href="https://coderaam.github.io/BlueBot-AI/" target="_blank" title="BlueBot AI"
+                    class="social-icon">&#x1F33A;</a>
+               <a href="#" title="YouTube" class="social-icon">&#x1F4FA;</a>
+          </div>
+          <div class="footer-copy">&copy; 2024 Amazon Clone. All rights reserved.</div>
+     </footer>
+
+     <button id="scrollTopBtn"
+          style="display:none;position:fixed;bottom:80px;right:24px;z-index:1000;background:#232f3e;color:#fff;border:none;border-radius:50%;width:48px;height:48px;font-size:2rem;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.2);cursor:pointer;">&#8679;</button>
+     <div id="creatorBtn"
+          style="position:fixed;bottom:24px;right:24px;z-index:1000;padding:12px 20px;background:#232f3e;color:#fff;border:none;border-radius:24px;box-shadow:0 2px 8px rgba(0,0,0,0.2);cursor:pointer;">
+          Created
+          by Ahmed Ali Mughal</div>
+     <div id="creatorModal"
+          style="display:none;position:fixed;z-index:2000;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.85);justify-content:center;align-items:center;">
+          <div
+               style="background:#fff;padding:32px 24px 24px 24px;border-radius:16px;max-width:400px;width:90%;text-align:center;position:relative;box-shadow:0 4px 32px rgba(0,0,0,0.3);">
+               <button id="closeCreatorModal"
+                    style="position:absolute;top:12px;right:16px;font-size:2rem;background:none;border:none;cursor:pointer;">&times;</button>
+               <div style="margin-bottom:16px;">
+                    <img id="creatorImg" src="about_3.jpeg" alt="Creator Image"
+                         style="width:120px;height:120px;border-radius:50%;object-fit:cover;background:#eee;" />
+               </div>
+               <h2>Ahmed Ali Mughal</h2>
+               <p style="margin:12px 0 20px 0;">Web Developer & Designer<br>Passionate about building modern web
+                    experiences.</p>
+               <div style="font-size:2rem;display:flex;justify-content:center;gap:18px;">
+                    <a href="https://coderaam.github.io/portfolio_A/" target="_blank" title="Portfolio"
+                         style="color:#4267B2;"><span>&#x1F426;</span></a>
+                    <a href="https://coderaam.github.io/SocialTube/" target="_blank" title="SocialTube"
+                         style="color:#1DA1F2;"><span>&#x1F426;</span></a>
+                    <a href="https://coderaam.github.io/BlueBot-AI/" target="_blank" title="BlueBot AI"
+                         style="color:#E1306C;"><span>&#x1F33A;</span></a>
+                    <a href="#" title="YouTube" style="color:#FF0000;"><span>&#x1F4FA;</span></a>
+               </div>
+          </div>
+     </div>
+
+     <script src="script.js"></script>
+</body>
+
+</html>
